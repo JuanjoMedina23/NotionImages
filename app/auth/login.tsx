@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, TextInput, TouchableOpacity, Text, ActivityIndicator, Alert } from "react-native";
 import { useAuth } from "../../contexts/AuthContext";
 import { useRouter } from "expo-router";
-
 export default function Login() {
   const { user, loading, login } = useAuth();
   const router = useRouter();
@@ -11,10 +10,11 @@ export default function Login() {
   const [submitting, setSubmitting] = useState(false);
 
   // Evita loops: si ya hay usuario, redirige al index
-  if (!loading && user) {
-    router.replace("/");
-    return null;
-  }
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/");
+    }
+  }, [loading, user, router]);
 
   const handleLogin = async () => {
     setSubmitting(true);

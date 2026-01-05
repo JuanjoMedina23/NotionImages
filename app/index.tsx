@@ -10,7 +10,7 @@ import NoteAi from "../services/NoteAi";
 
 export default function Home() {
   const { getFilteredNotes } = useNotes();
-  const { user, loading } = useAuth(); // ← AGREGAR ESTO
+  const { user, loading } = useAuth(); 
   const [filter, setFilter] = useState<"all" | "pending" | "completed">("all");
   const { theme } = useContext(ThemeContext);
 
