@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Link, usePathname } from "expo-router";
 import type { Href } from "expo-router";
-import { Home, FilePlus2, Settings } from "lucide-react-native";
+import { Home, FilePlus2, Settings, Images} from "lucide-react-native";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
@@ -13,6 +13,7 @@ export default function TabsNavigator() {
     { name: "Inicio", href: "/", icon: Home },
     { name: "Crear", href: "/create", icon: FilePlus2 },
     { name: "Ajustes", href: "/auth/settings", icon: Settings },
+    { name: "Galeria", href: "/GaleryImages", icon: Images },
   ];
 
   return (

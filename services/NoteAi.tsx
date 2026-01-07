@@ -7,6 +7,11 @@ import { useNotes } from "../contexts/NoteContext";
 import CameraNote from "../components/CameraNote";
 import { useRouter } from "expo-router";
 import Markdown from "react-native-markdown-display";
+//Esto permite guardar la foto ademas de agregar un icono de lucide
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Image as ImageLucide } from "lucide-react-native";
+//Las fotos se almacenan bajo la key @saved_photos
+const PHOTOS_KEY = "@saved_photos";
 
 type Message = {
   id: string;
@@ -330,6 +335,32 @@ Mantén las respuestas claras y accionables.`;
     setLoading(false);
   }
 
+  async function handleSavedPhoto(base64:string) {
+    try{
+      //aqui obtengo las fotos existentes
+      const photosJson = await AsyncStorage.getItem(PHOTOS_KEY);
+      const existingPhotos = photosJson ? JSON.parse(photosJson) : [];
+      
+      const photodata={
+        id: `photo_${Date.now()}`,
+        image: base64,//-----------------------
+        timestamp: new Date().toISOString(), 
+      };
+      const updatedPhotos = [photodata, ...existingPhotos];
+
+      await AsyncStorage.setItem(PHOTOS_KEY, JSON.stringify(updatedPhotos));
+      //Mensaje de consola para poder verificar si se guarda
+      console.log("Se guardo la imagen xd ");
+    } 
+    catch (err:any)//error-------------Tengo que cambiar si es que no sirve y solo poner error no con any
+    {
+      console.log("No se pudo guardar la fotovich")
+    }
+       
+    }
+    
+  
+
   // Sugerencias rápidas
   const quickSuggestions = [
     "¿Qué notas tengo guardadas?",
@@ -387,18 +418,8 @@ Mantén las respuestas claras y accionables.`;
               </TouchableOpacity>
             </View>
 
-            {/* BOTÓN ABRIR CÁMARA */}
-            <TouchableOpacity
-              onPress={() => setOpenCamera(true)}
-              className="mb-3 p-3 rounded-xl flex-row items-center justify-center"
-              style={{ backgroundColor: theme.primary }}
-            >
-              <Camera size={22} color={theme.card} />
-              <Text style={{ color: theme.card, marginLeft: 8 }}>
-                Tomar foto
-              </Text>
-            </TouchableOpacity>
-
+            {/* Borre la opcion de tomar foto desde la IA, ahora solo se hace desde imagen */}
+            
             {/* CHAT */}
             <ScrollView ref={scrollRef} className="flex-1 mb-2">
               {messages.length === 0 ? (
