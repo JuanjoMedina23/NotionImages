@@ -1,53 +1,187 @@
-> Edited for use in IDX on 07/09/12
+📝 NotionImages — AI Notes App
 
-# Welcome to your Expo app 👋
+NotionImages es una aplicación de notas inteligente creada con Expo y Firebase Studio, que combina productividad, IA generativa (GenAI) y análisis de imágenes para mejorar la organización personal.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+La app permite crear, editar y mejorar notas con ayuda de un chatbot con permisos completos, análisis de imágenes desde la galería y múltiples modos visuales (temas).
 
-## Get started
+🚀 Características principales
+✍️ Notas con IA (GenAI)
 
-#### Android
+Creación y edición de notas tradicionales.
 
-Android previews are defined as a `workspace.onStart` hook and started as a vscode task when the workspace is opened/started.
+Chatbot con IA que puede:
 
-Note, if you can't find the task, either:
-- Rebuild the environment (using command palette: `IDX: Rebuild Environment`), or
-- Run `npm run android -- --tunnel` command manually run android and see the output in your terminal. The device should pick up this new command and switch to start displaying the output from it.
+Leer notas existentes
 
-In the output of this command/task, you'll find options to open the app in a
+Editar y mejorar contenido
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Reorganizar texto
 
-You'll also find options to open the app's developer menu, reload the app, and more.
+Sugerir mejoras automáticamente
 
-#### Web
+La IA actúa como un asistente con permisos controlados sobre las notas.
 
-Web previews will be started and managred automatically. Use the toolbar to manually refresh.
+🖼️ Análisis de imágenes con IA
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Selección de imágenes desde la galería interna de la app.
 
-## Get a fresh project
+Conversión de imágenes a Base64 para análisis con IA.
 
-When you're ready, run:
+Ejemplo de uso:
 
-```bash
-npm run reset-project
-```
+Foto de un cuarto desordenado → la IA genera una lista de tareas organizada para mejorar el ambiente.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Pantalla dedicada accesible mediante Tabs inferiores.
 
-## Learn more
+👉 Gestos inteligentes
 
-To learn more about developing your project with Expo, look at the following resources:
+Implementado con React Native Gesture Handler:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+👉 Deslizar a la derecha → la IA analiza la imagen
 
-## Join the community
+👈 Deslizar a la izquierda → marcar imagen como favorita
 
-Join our community of developers creating universal apps.
+🎨 Temas visuales (Settings)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Pantalla de configuración con múltiples modos:
+
+🌞 Normal
+
+🌙 Oscuro
+
+🎄 Navidad
+
+🎃 Halloween
+
+El tema seleccionado:
+
+Se guarda con AsyncStorage
+
+Se maneja mediante Context Providers
+
+Se aplica globalmente en toda la app
+
+🔐 Autenticación real
+
+Inicio de sesión obligatorio con Google
+
+Cada usuario tiene acceso solo a sus datos
+
+Autenticación segura antes de acceder a notas o IA
+
+🗄️ Backend y persistencia
+
+Supabase como base de datos principal
+
+Se almacenan:
+
+Usuario
+
+Notas
+
+Contenido
+
+Fechas
+
+Metadatos adicionales
+
+Relación clara entre usuario y notas
+
+✨ Experiencia de usuario
+
+Splash Screen personalizado
+
+Navegación moderna con Expo Router
+
+Diseño consistente y adaptable a temas
+
+Tabs inferiores para acceso rápido a funciones clave
+
+🛠️ Tecnologías utilizadas
+
+Expo (React Native)
+
+Expo Router
+
+Firebase Studio
+
+Supabase
+
+AsyncStorage
+
+React Context API
+
+GenAI
+
+React Native Gesture Handler
+
+Expo Image / Media APIs
+
+Google Authentication
+
+📱 Plataformas soportadas
+
+✅ Android
+
+✅ iOS
+
+✅ Web (Expo Web)
+
+▶️ Cómo ejecutar el proyecto
+
+Instala dependencias:
+
+npm install
+
+
+Inicia el proyecto:
+
+npx expo start
+
+
+Opciones disponibles:
+
+Expo Go
+
+Android Emulator
+
+iOS Simulator
+
+Web
+
+📁 Estructura del proyecto
+
+app/ → Rutas y pantallas (Expo Router)
+
+contexts/ → Providers (Auth, Theme, Notes)
+
+components/ → Componentes reutilizables
+
+assets/ → Imágenes, splash, íconos
+
+🌱 Futuras mejoras
+
+Sincronización offline
+
+Historial de versiones de notas
+
+Exportación de notas
+
+Más acciones por gestos
+
+Más estilos de IA
+
+🤝 Comunidad
+
+Expo Docs
+
+Expo GitHub
+
+Expo Discord
+
+
+Aqui se muestra un ejemplo del funcionamiento de la app en modo gif:
+
+
+https://github.com/user-attachments/assets/b629f905-5a92-4d9d-9f33-fa071cdc96c4
+
